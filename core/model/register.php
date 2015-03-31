@@ -42,7 +42,8 @@ class Register_Model
 		
 		$query = 	"SELECT COUNT(*) AS licznik FROM " . $this->table_name . 
 					" WHERE user_login = '" . $record_item['user_login'] .
-					"' OR email = '" . $record_item['email'] . "'";
+					"' OR email = '" . $record_item['email'] .
+					"' OR pesel = '" . $record_item['pesel'] . "'";
 		$result = mysql_query($query);
 		if ($result)
 		{
@@ -60,7 +61,8 @@ class Register_Model
 					sha1($record_item['user_password']) . "', '" . 
 					mysql_real_escape_string($record_item['imie']) . "', '" . 
 					mysql_real_escape_string($record_item['nazwisko']) . "', '" . 
-					mysql_real_escape_string($record_item['email']) . "', '3', '', '', '', '', '', '" . 
+					mysql_real_escape_string($record_item['email']) . "', '3', '', '', '', '" .
+					mysql_real_escape_string($record_item['pesel'])."', '', '" . 
 					$this->mySqlDateTime . "', '', '', '', '1')";
 
 		mysql_query($query);
